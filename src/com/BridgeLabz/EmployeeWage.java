@@ -5,29 +5,37 @@ public class EmployeeWage {
     static final int PART_TIME_HOUR=8;
     static final int IS_PART_TIME=1;
     static final int IS_FULL_TIME=2;
+    //static final int  TOTAL_WORKING_HOURS=100;
+    static final int TOTAL_WORKING_DAYS=20;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Program");
+        int day=0;
+        int totalWage=0;
 
-        int empRandom=(int)Math.floor(Math.random()*10)%3;
-        int dailyWage=0;
+        while(day<=TOTAL_WORKING_DAYS) {
+            int empRandom = (int) Math.floor(Math.random() * 10) % 3;
+            int dailyWage = 0;
 
-        switch(empRandom){
+            switch (empRandom) {
+                case IS_FULL_TIME:
+                    System.out.println("Employee is Present!!");
+                    dailyWage = WAGE_PER_HOUR * FULL_DAY_HOUR;
+                    break;
 
-            case IS_FULL_TIME:
-                System.out.println("Employee is Present!!");
-                dailyWage=WAGE_PER_HOUR * FULL_DAY_HOUR;
-                break;
+                case IS_PART_TIME:
+                    System.out.println("Employee works Part-time!!");
+                    dailyWage = WAGE_PER_HOUR * PART_TIME_HOUR;
+                    break;
 
-            case IS_PART_TIME:
-                System.out.println("Employee works Part-time!!");
-                dailyWage=WAGE_PER_HOUR * PART_TIME_HOUR;
-                break;
+                default:
+                    System.out.println("Employee is Absent!!");
 
-            default:
-                System.out.println("Employee is Absent!!");
+            }
+            totalWage=TOTAL_WORKING_DAYS * dailyWage;
+            System.out.println("Employee Daily Wage = Rs. " + dailyWage);
+            day++;
         }
-        System.out.println("Employee Daily Wage = Rs. "+dailyWage);
-
+        System.out.println("Employee Monthly Wage = Rs. "+ totalWage);
     }
 }
